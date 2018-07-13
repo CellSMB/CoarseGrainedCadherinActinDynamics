@@ -1,0 +1,217 @@
+<?xml version='1.0'?>
+<model name="E_cadherin_dynamics" xmlns="http://www.cellml.org/cellml/1.1#" xmlns:cellml="http://www.cellml.org/cellml/1.1#">
+    <!-- um-->
+    <units name="um">
+        <unit multiplier="0.000001" units="metre"/>
+    </units>
+    <!-- um^-2-->
+    <units name="umn2">
+        <unit exponent="-2" units="um"/>
+    </units>
+    <!-- s^-1*um^2-->
+    <units name="umn2ps">
+        <unit exponent="-1" units="umn2"/>
+        <unit exponent="-1" units="second"/>
+    </units>
+    <!-- s^-1-->
+    <units name="psec">
+        <unit exponent="-1" units="second"/>
+    </units>
+    <component name="environment">
+        <variable name="t" public_interface="out" units="second"/>
+    </component>
+    <component name="membrane">
+        <variable name="t" public_interface="in" units="second"/>
+        <variable initial_value="0.5" name="k1" units="umn2ps"/>
+        <variable initial_value="1840" name="k_xp" units="psec"/>
+        <variable initial_value="38000" name="k_x" units="psec"/>
+        <variable initial_value="0.000127" name="k_sp" units="psec"/>
+        <variable initial_value="0.31" name="k_s" units="psec"/>
+        <variable initial_value="86" name="k_xs" units="psec"/>
+        <variable initial_value="0.8" name="k_sx" units="psec"/>
+        <variable initial_value="625" name="M1" units="umn2"/>
+        <variable initial_value="625" name="M2" units="umn2"/>
+        <variable initial_value="0" name="MM" units="umn2"/>
+        <variable initial_value="0" name="X" units="umn2"/>
+        <variable initial_value="0" name="S" units="umn2"/>
+        <variable name="trans" units="umn2"/>
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+            <apply>
+                <eq/>
+                <apply>
+                    <diff/>
+                    <bvar>
+                        <ci>t</ci>
+                    </bvar>
+                    <ci>M1</ci>
+                </apply>
+                <apply>
+                    <plus/>
+                    <apply>
+                        <times/>
+                        <apply>
+                            <minus/>
+                            <ci>k1</ci>
+                        </apply>
+                        <ci>M1</ci>
+                        <ci>M2</ci>
+                    </apply>
+                    <apply>
+                        <times/>
+                        <ci>k_xp</ci>
+                        <ci>X</ci>
+                    </apply>
+                    <apply>
+                        <times/>
+                        <ci>k_sp</ci>
+                        <ci>S</ci>
+                    </apply>
+                </apply>
+            </apply>
+            <apply>
+                <eq/>
+                <apply>
+                    <diff/>
+                    <bvar>
+                        <ci>t</ci>
+                    </bvar>
+                    <ci>M2</ci>
+                </apply>
+                <apply>
+                    <plus/>
+                    <apply>
+                        <times/>
+                        <apply>
+                            <minus/>
+                            <ci>k1</ci>
+                        </apply>
+                        <ci>M1</ci>
+                        <ci>M2</ci>
+                    </apply>
+                    <apply>
+                        <times/>
+                        <ci>k_xp</ci>
+                        <ci>X</ci>
+                    </apply>
+                    <apply>
+                        <times/>
+                        <ci>k_sp</ci>
+                        <ci>S</ci>
+                    </apply>
+                </apply>
+            </apply>
+            <apply>
+                <eq/>
+                <apply>
+                    <diff/>
+                    <bvar>
+                        <ci>t</ci>
+                    </bvar>
+                    <ci>MM</ci>
+                </apply>
+                <apply>
+                    <minus/>
+                    <apply>
+                        <times/>
+                        <ci>k1</ci>
+                        <ci>M1</ci>
+                        <ci>M2</ci>
+                    </apply>
+                    <apply>
+                        <times/>
+                        <apply>
+                            <plus/>
+                            <ci>k_x</ci>
+                            <ci>k_s</ci>
+                        </apply>
+                        <ci>MM</ci>
+                    </apply>
+                </apply>
+            </apply>
+            <apply>
+                <eq/>
+                <apply>
+                    <diff/>
+                    <bvar>
+                        <ci>t</ci>
+                    </bvar>
+                    <ci>X</ci>
+                </apply>
+                <apply>
+                    <minus/>
+                    <apply>
+                        <plus/>
+                        <apply>
+                            <times/>
+                            <ci>k_x</ci>
+                            <ci>MM</ci>
+                        </apply>
+                        <apply>
+                            <times/>
+                            <ci>k_sx</ci>
+                            <ci>S</ci>
+                        </apply>
+                    </apply>
+                    <apply>
+                        <times/>
+                        <apply>
+                            <plus/>
+                            <ci>k_xp</ci>
+                            <ci>k_xs</ci>
+                        </apply>
+                        <ci>X</ci>
+                    </apply>
+                </apply>
+            </apply>
+            <apply>
+                <eq/>
+                <apply>
+                    <diff/>
+                    <bvar>
+                        <ci>t</ci>
+                    </bvar>
+                    <ci>S</ci>
+                </apply>
+                <apply>
+                    <minus/>
+                    <apply>
+                        <plus/>
+                        <apply>
+                            <times/>
+                            <ci>k_s</ci>
+                            <ci>MM</ci>
+                        </apply>
+                        <apply>
+                            <times/>
+                            <ci>k_xs</ci>
+                            <ci>X</ci>
+                        </apply>
+                    </apply>
+                    <apply>
+                        <times/>
+                        <apply>
+                            <plus/>
+                            <ci>k_sp</ci>
+                            <ci>k_sx</ci>
+                        </apply>
+                        <ci>S</ci>
+                    </apply>
+                </apply>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>trans</ci>
+                <apply>
+                    <plus/>
+                    <ci>MM</ci>
+                    <ci>X</ci>
+                    <ci>S</ci>
+                </apply>
+            </apply>
+        </math>
+    </component>
+    <connection>
+        <map_components component_1="environment" component_2="membrane"/>
+        <map_variables variable_1="t" variable_2="t"/>
+    </connection>
+</model>
