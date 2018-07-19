@@ -37,6 +37,7 @@
         <variable initial_value="1" name="alpha" units="dimensionless"/>
         <variable initial_value="1" name="beta" units="dimensionless"/>
         <variable initial_value="0" name="k_cisp_m" units="dimensionless"/>
+        <variable initial_value="0" name="k_cispstar_m" units="dimensionless"/>
         <variable initial_value="625" name="M1" units="umn2"/>
         <variable initial_value="625" name="M2" units="umn2"/>
         <variable initial_value="0" name="MM" units="umn2"/>
@@ -83,11 +84,12 @@
                     <apply>
                         <times/>
                         <ci>k_cisp_m</ci>
-                        <apply>
-                            <plus/>
-                            <ci>Cis</ci>
-                            <ci>Cis_star</ci>
-                        </apply>
+                        <ci>Cis</ci>
+                    </apply>
+                    <apply>
+                        <times/>
+                        <ci>k_cispstar_m</ci>
+                        <ci>Cis_star</ci>
                     </apply>
                 </apply>
             </apply>
@@ -124,11 +126,12 @@
                     <apply>
                         <times/>
                         <ci>k_cisp_m</ci>
-                        <apply>
-                            <plus/>
-                            <ci>Cis</ci>
-                            <ci>Cis_star</ci>
-                        </apply>
+                        <ci>Cis</ci>
+                    </apply>
+                    <apply>
+                        <times/>
+                        <ci>k_cispstar_m</ci>
+                        <ci>Cis_star</ci>
                     </apply>
                 </apply>
             </apply>
@@ -313,7 +316,7 @@
                                 <ci>beta</ci>
                                 <ci>k_sa</ci>
                             </apply>
-                            <ci>k_cisp_m</ci>
+                            <ci>k_cispstar_m</ci>
                         </apply>
                         <ci>Cis_star</ci>
                     </apply>
