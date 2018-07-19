@@ -36,6 +36,7 @@
         <variable initial_value="1e4" name="k_sa" units="psec"/>
         <variable initial_value="1" name="alpha" units="dimensionless"/>
         <variable initial_value="1" name="beta" units="dimensionless"/>
+        <variable initial_value="0" name="k_cisp_m" units="dimensionless"/>
         <variable initial_value="625" name="M1" units="umn2"/>
         <variable initial_value="625" name="M2" units="umn2"/>
         <variable initial_value="0" name="MM" units="umn2"/>
@@ -79,6 +80,15 @@
                         <ci>k_sp</ci>
                         <ci>S</ci>
                     </apply>
+                    <apply>
+                        <times/>
+                        <ci>k_cisp_m</ci>
+                        <apply>
+                            <plus/>
+                            <ci>Cis</ci>
+                            <ci>Cis_star</ci>
+                        </apply>
+                    </apply>
                 </apply>
             </apply>
             <apply>
@@ -110,6 +120,15 @@
                         <times/>
                         <ci>k_sp</ci>
                         <ci>S</ci>
+                    </apply>
+                    <apply>
+                        <times/>
+                        <ci>k_cisp_m</ci>
+                        <apply>
+                            <plus/>
+                            <ci>Cis</ci>
+                            <ci>Cis_star</ci>
+                        </apply>
                     </apply>
                 </apply>
             </apply>
@@ -294,6 +313,7 @@
                                 <ci>beta</ci>
                                 <ci>k_sa</ci>
                             </apply>
+                            <ci>k_cisp_m</ci>
                         </apply>
                         <ci>Cis_star</ci>
                     </apply>
@@ -318,8 +338,15 @@
                     </apply>
                     <apply>
                         <times/>
-                        <ci>alpha</ci>
-                        <ci>k_cisp</ci>
+                        <apply>
+                            <plus/>
+                            <apply>
+                                <times/>
+                                <ci>alpha</ci>
+                                <ci>k_cisp</ci>
+                            </apply>
+                            <ci>k_cisp_m</ci>
+                        </apply>
                         <ci>Cis</ci>
                     </apply>
                 </apply>
