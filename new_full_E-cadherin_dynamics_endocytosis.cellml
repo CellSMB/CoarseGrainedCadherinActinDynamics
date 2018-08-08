@@ -22,7 +22,7 @@
     </component>
     <component name="membrane">
         <variable name="t" public_interface="in" units="second"/>
-        <variable initial_value="0.25" name="jon" units="psec"/>
+        <variable initial_value="1" name="jon" units="psec"/>
         <variable initial_value="0.09197" name="joff" units="psec"/>
         <!--0.25/e-->
         <variable initial_value="0.5" name="k1" units="umn2ps"/>
@@ -32,7 +32,7 @@
         <variable initial_value="0.31" name="k_s" units="psec"/>
         <variable initial_value="86" name="k_xs" units="psec"/>
         <variable initial_value="0.8" name="k_sx" units="psec"/>
-        <variable initial_value="0.1" name="k2" units="psec"/>
+        <variable initial_value="10" name="k2" units="psec"/>
         <!--        var k2: psec;-->
         <variable initial_value="0" name="k_cisp" units="psec"/>
         <variable initial_value="1e5" name="k_cis" units="psec"/>
@@ -47,6 +47,7 @@
         <variable initial_value="0" name="X" units="umn2"/>
         <variable initial_value="0" name="S" units="umn2"/>
         <variable name="trans" units="umn2"/>
+        <variable name="All" units="umn2"/>
         <variable initial_value="0" name="SS" units="umn2"/>
         <variable initial_value="0" name="Cis_star" units="umn2"/>
         <variable initial_value="0" name="Cis" units="umn2"/>
@@ -370,12 +371,26 @@
                                 <apply>
                                     <divide/>
                                     <ci>Cis</ci>
-                                    <cn cellml:units="dimensionless">100</cn>
+                                    <cn cellml:units="dimensionless">200</cn>
                                 </apply>
                             </apply>
                             <cn cellml:units="dimensionless">1</cn>
                         </apply>
                     </apply>
+                </apply>
+            </apply>
+            <apply>
+                <eq/>
+                <ci>All</ci>
+                <apply>
+                    <plus/>
+                    <ci>M1</ci>
+                    <ci>MM</ci>
+                    <ci>X</ci>
+                    <ci>S</ci>
+                    <ci>SS</ci>
+                    <ci>Cis_star</ci>
+                    <ci>Cis</ci>
                 </apply>
             </apply>
         </math>
