@@ -1,0 +1,87 @@
+####################################
+# GEOMETRIC INPUTS
+####################################
+
+#Inputing the mesh node and ele files
+./square.1.node,./square.1.ele
+
+####################################
+# SIMULATION RUNTIME INPUTS
+####################################
+
+#simulation rd time parameters - Initial, Final, PDE Timestep, ODE Timestep
+0.0,1200.0,1.0,0.00001
+
+#simulation mech load parameters - Load Step
+1
+
+#results output frequency
+1
+
+####################################
+# REACTION DIFFUSION INPUTS
+####################################
+
+#Inputing the cellml model of Holmes wave-pinning actin polymerization signalling model
+./cellml/new_full_E-cadherin_dynamics_endocytosis.cellml
+
+#M1 Initial Conc. (molecules/um^2) / Diffusivities in x (um^2/s)/ Diffusivities in y (um^2/s)
+0.0,0.028,0.028
+
+#M2 Initial Conc. (molecules/um^2) / Diffusivities in x (um^2/s)/ Diffusivities in y (um^2/s)
+0.0,0.028,0.028
+
+#MM Initial Conc. (molecules/um^2) / Diffusivities in x (um^2/s)/ Diffusivities in y (um^2/s)
+0.0,0.0,0.0
+
+#X Initial Conc. (molecules/um^2) / Diffusivities in x (um^2/s)/ Diffusivities in y (um^2/s)
+0.0,0.028,0.028
+
+#S Initial Conc. (molecules/um^2) / Diffusivities in x (um^2/s)/ Diffusivities in y (um^2/s)
+0.0,0.028,0.028
+
+#SS Initial Conc. (molecules/um^2) / Diffusivities in x (um^2/s)/ Diffusivities in y (um^2/s)
+0.0,0.0,0.0
+
+#Cis_star Initial Conc. (molecules/um^2) / Diffusivities in x (um^2/s)/ Diffusivities in y (um^2/s)
+0.0,0.0,0.0
+
+#Cis Initial Conc. (molecules/um^2) / Diffusivities in x (um^2/s)/ Diffusivities in y (um^2/s)
+0.0,0.0,0.0
+
+# Kinetic Constant
+# k1, k_xp, k_x, k_sp, k_s, k_xs, k_sx
+0.5,1840,38000,0.000127,0.31,86,0.8
+
+# k2, k_cisp, k_cis, k_sa, k_cisp_m, k_cispstar_m, alpha, beta, jon, joff
+0.1,100,100000,100000,0,0,1,1,1,0.09197
+
+####################################
+# MECHANICS INPUTS
+####################################
+
+# Mooney-Rivlin constants. C10,C01,kappa
+2.0,3.0,100.0
+
+# Critical force for each cadherin dimer to break. f_crit (pN)
+50
+
+# Aimed micropipette_force per um^2 (pN)
+90000
+
+# Time to reach the force (s)
+240  
+
+####################################
+# DEBUG MODE
+####################################
+
+#debug_mode
+1
+
+####################################
+# Break MODE
+####################################
+
+#bread_mode
+1
